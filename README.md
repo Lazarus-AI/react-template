@@ -1,3 +1,5 @@
+<h1>Front-end Documentation</h1>
+
 <h3>REACT COMPONENTS:</h3>
 
 We are moving towards using exclusively functional (instead of class) components, using React hooks to store state (useState)
@@ -112,7 +114,7 @@ run 'npm install @anishp16/lazarus-cds'
     import '@anishp16/lazarus-cds/dist/index.css'
     
 To use local version of component library,
-run 'npm link' in Component-Lib
-run 'npm link Component-Lib' in your application directory
-run 'npm start' in Component-Lib
-run 'npm start' in application directory
+> run 'npm link' in Component-Lib
+> run 'npm link Component-Lib' in your application directory
+> run 'npm start' in Component-Lib
+> run 'npm start' in application directory

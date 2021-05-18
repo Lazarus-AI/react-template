@@ -1,0 +1,9 @@
+const types = {
+  CREATE_FIREBASE_APP: 'CREATE_FIREBASE_APP',
+  SIGN_IN: 'SIGN_IN',
+  SIGN_UP: 'SIGN_UP',
+  SIGN_OUT: 'SIGN_OUT',
+  STORE_PAYLOAD: 'STORE_PAYLOAD',
+}
+
+export default types

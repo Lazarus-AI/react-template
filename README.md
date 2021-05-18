@@ -115,6 +115,9 @@ run 'npm install @anishp16/lazarus-cds'
     
 To use local version of component library,
 > run 'npm link' in Component-Lib
+>
 > run 'npm link Component-Lib' in your application directory
+>
 > run 'npm start' in Component-Lib
+>
 > run 'npm start' in application directory

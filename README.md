@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+REACT COMPONENTS:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+We are moving towards using exclusively functional (instead of class) components, using React hooks to store state (useState)
+and to listen for changes in dependencies (useEffect instead of lifecycle methods such as ComponentWillRecieveProps).
 
-## Available Scripts
+Please leave a comment before defining a component describing what it is and what it does.
 
-In the project directory, you can run:
+    Example:
+    // Dependencies
+    import React, {useState} from 'react'
+    
+    // Styles
+    import '../styles/PopUpTab.css'
 
-### `npm start`
+    /*  Renders a clickable tab
+        Clicking it allows user to toggle isFooBar
+    */
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    function PopUpTab(props) {
+      const [isFooBar, setIsFooBar] = useState(false)
+      return (
+        <div
+          className='popUpTab'
+          onClick={() => setIsFooBar(!isFooBar)}
+        />
+      )
+    }
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    export default PopUpTab
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+REDUX:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+State only used by a component or its direct children is stored locally in component using the 'useState' method. State that is
+or might be used by multiple components is stored using Redux.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To store state globally with redux, use the storePayload action in src/actions. This action will store values through whichever
+reducer has a case for 'STORE_PAYLOAD' (e.g. userReducer).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    Example:
+    props.storePayload({foo: 'bar'})
 
-### `npm run eject`
+Global state saved through redux is accessed in a component with the 'mapStateToProps' function. This function is the first
+argument in the 'connect' method from react-redux. The second argument is all the actions being used by the component.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    Example:
+    export default connect(mapStateToProps, {storePayload})(App)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Actions other than storePayload are typically used for HTTP requests that result in a value being stored to global state.
+Actions use 'redux-thunk' middleware to use logic followed by a 'dispatch' of the data to be stored.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    Example:
+    export const postDataAction = (dataToPost) => (dispatch) => {
+      const url = process.env.REACT_APP_URL + 'endPoint'
+      fetch(url, {method: 'POST', body: dataToPost})
+          .then((res) => {
+            if (res.ok) {
+              dispatch({
+                type: 'STORE_PAYLOAD',
+                payload: {
+                  userMessage: 'success',
+                  notificationType: 2,
+                  notificationIcon: 'check',
+                },
+              })
+            }
+          })
+    }
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ENVIRONMENTAL VARIABLES:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+API keys and api urls that change from development to production are stored in a .env file. DO NOT PUSH .ENV FILE!
+Add .env to .gitignore file
+    
+    Example:
+    REACT_APP_PDF_URL=http://pdf-url.com
+    REACT_APP_API_KEY=foobar
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+CSS:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+With rare exeception, the only component library we use is our own. PLEASE DO NOT USE A 3rd PARTY COMPONENT LIBRARY WITHOUT
+PERMISSION!
 
-### Making a Progressive Web App
+Each component should have its own CSS file in src/styles. Css used for multiple components is in index.css. Use specific
+names for classes and use a specific selector if the class has a generic name.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    Example:
+    #login-form .tab {
+      margin: 1em;
+    }
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+COMPONENT LIBRARY:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Our component library is deployed here:
+https://componentlibrary.web.app/
 
-### `npm run build` fails to minify
+The repository is here:
+https://github.com/Lazarus-AI/Component-Lib
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To use the published npm package of our component library,
+run 'npm install @anishp16/lazarus-cds'
+
+    Example component import:
+    import {Notification} from '@anishp16/lazarus-cds'
+    import '@anishp16/lazarus-cds/dist/index.css'
+    
+To use local version of component library,
+run 'npm link' in Component-Lib
+run 'npm link Component-Lib' in your application directory
+run 'npm start' in Component-Lib
+run 'npm start' in application directory

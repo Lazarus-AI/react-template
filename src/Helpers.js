@@ -52,6 +52,7 @@ const Helpers = {
     }
   },
 
+  /* Used to trigger callback after typing has stopped for pause length */
   toggleTyping(timeOfType, callback, pauseLength = 2000) {
     setTimeout(() => {
       const now = Date.now()

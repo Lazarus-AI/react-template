@@ -1,4 +1,4 @@
-REACT COMPONENTS:
+<h3>REACT COMPONENTS:</h3>
 
 We are moving towards using exclusively functional (instead of class) components, using React hooks to store state (useState)
 and to listen for changes in dependencies (useEffect instead of lifecycle methods such as ComponentWillRecieveProps).
@@ -30,7 +30,7 @@ Please leave a comment before defining a component describing what it is and wha
 
 
 
-REDUX:
+<h3>REDUX:</h3>
 
 State only used by a component or its direct children is stored locally in component using the 'useState' method. State that is
 or might be used by multiple components is stored using Redux.
@@ -70,7 +70,7 @@ Actions use 'redux-thunk' middleware to use logic followed by a 'dispatch' of th
 
 
 
-ENVIRONMENTAL VARIABLES:
+<h3>ENVIRONMENTAL VARIABLES:</h3>
 
 API keys and api urls that change from development to production are stored in a .env file. DO NOT PUSH .ENV FILE!
 Add .env to .gitignore file
@@ -81,7 +81,7 @@ Add .env to .gitignore file
 
 
 
-CSS:
+<h3>CSS:</h3>
 
 With rare exeception, the only component library we use is our own. PLEASE DO NOT USE A 3rd PARTY COMPONENT LIBRARY WITHOUT
 PERMISSION!
@@ -96,7 +96,7 @@ names for classes and use a specific selector if the class has a generic name.
 
 
 
-COMPONENT LIBRARY:
+<h3>COMPONENT LIBRARY:</h3>
 
 Our component library is deployed here:
 https://componentlibrary.web.app/

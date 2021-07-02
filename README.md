@@ -124,7 +124,7 @@ To use local version of component library,
 
 <h3>How to let code compile with ESLint Warnings</h3>
 
-In node_modules/react-scripts/config/webpack.config.js
+In node_modules/react-scripts/config/webpack.config.js, 
 In newEsLintPlugin's first argument, change
 failOnError to false
 

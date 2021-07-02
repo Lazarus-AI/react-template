@@ -9,11 +9,11 @@ import store from './store'
 
 ReactDOM.render(
     <React.StrictMode>
-        <Provider store={store}>
-          <Router>
-            <App />
-          </Router>
-        </Provider>
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
     </React.StrictMode>,
     document.getElementById('root'),
 )
@@ -22,4 +22,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister()
-

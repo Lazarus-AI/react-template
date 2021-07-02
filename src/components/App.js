@@ -1,7 +1,7 @@
 // Dependencies'
 import React, {useState, useEffect, Fragment} from 'react'
 import {connect} from 'react-redux'
-import {Route} from 'react-router-dom'
+// import {Route} from 'react-router-dom'
 import Helpers from '../Helpers.js'
 
 // Actions
@@ -63,9 +63,9 @@ function App(props) {
           onClick={onClickNotification}
         />
       }
-    <div className="App">
-      {/* Routes */}
-    </div>
+      <div className="App">
+        {/* Routes */}
+      </div>
     </Fragment>
   )
 }
@@ -84,3 +84,4 @@ export default connect(
     mapStateToProps,
     {createFirebaseApp, storePayload},
 )(App)
+

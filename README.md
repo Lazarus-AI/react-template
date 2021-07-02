@@ -121,3 +121,38 @@ To use local version of component library,
 > run 'npm start' in Component-Lib
 >
 > run 'npm start' in application directory
+
+<h3>How to let code compile with ESLint Warnings</h3>
+
+In node_modules/react-scripts/config/webpack.config.js
+In newEsLintPlugin's first argument, change
+failOnError to false
+
+```
+        new ESLintPlugin({
+          // Plugin options
+          extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
+          formatter: require.resolve('react-dev-utils/eslintFormatter'),
+          eslintPath: require.resolve('eslint'),
+          failOnError: false, // This
+          context: paths.appSrc,
+          cache: true,
+          cacheLocation: path.resolve(
+            paths.appNodeModules,
+            '.cache/.eslintcache'
+          ),
+          // ESLint class options
+          cwd: paths.appPath,
+          resolvePluginsRelativeTo: __dirname,
+          baseConfig: {
+            extends: [require.resolve('eslint-config-react-app/base')],
+            rules: {
+              ...(!hasJsxRuntime && {
+                'react/react-in-jsx-scope': 'error',
+              }),
+            },
+          },
+        }),
+
+```
+

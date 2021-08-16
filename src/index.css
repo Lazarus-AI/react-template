@@ -1,4 +1,14 @@
+html {
+  /* prevents rubberband effect */
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
+  /* prevents rubberband effect */
+  height: 100%;
+  overflow: auto;
+  /* */
   margin: 0;
   font-family: 'Work Sans', sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -82,6 +82,67 @@ Add .env to .gitignore file
     REACT_APP_API_KEY=foobar
 
 
+<h3>CODE STANDARDS</h3>
+
+-If you're using VSCode, install ESLint and make sure you're not pushing code with linter errors.
+
+-Use camelCase unless you're naming a class.
+
+-Be specific about your variable names.
+
+-Use yes/no questions for booleans (i.e. isLinkClicked, areTestsRendered).
+
+-Function and method names describe what is done (i.e. incrementCounter). If function/method name is very long or doesn't explain all behavior, it's probably because you need to separate concerns. For example, incrementCounterAndSetIsModalShowing should be separated into two functions/methods-incrementCounter, and setIsModalShowing. The function/method that calls these functions can be described by what triggers it (i.e. onClickPlus)
+
+-Use comments to describe complex functions/methods/classes/variables
+
+-Use comments to describe hacks and why they were implemented
+
+  Example:
+
+  ```
+    /*
+      This setTimeout is used to trigger behaviorX after behaviorY
+      because *reason*
+    */
+
+  ```
+
+-Use comments to label conditions in long or nested "if" statements
+
+  Example:
+
+  ```
+  if (!number) { // number is 0 or undefined
+    /*
+
+      code
+       
+    */
+  } else { // number is not 0
+    /*
+
+      code
+    
+    */
+    if (isModalShowing) { // number is not 0 and isModalShowing
+      /*
+
+        code
+
+      */
+    } else { // number is not 0 and !isModalShowing
+      /*
+
+        code
+
+      */
+    }
+  }
+  ```
+
+
+
 
 <h3>CSS:</h3>
 
